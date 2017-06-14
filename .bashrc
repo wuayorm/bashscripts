@@ -219,13 +219,13 @@ function srvstat() {
   fi
 
   if [[ $1 == "confluence" && -f $wikisite/start-confluence.sh ]]; then
-    sudo -i tail -200 /opt/atlassian/confluence/logs/catalina.out
+    sudo tail -200 /var/atlassian/application-data/confluence/logs/atlassian-confluence.log
     return 1
-  elif [[ $1 == "jira" && -f $jirasite/start-jira.sh ]]; then  
-    sudo -i tail -200 /opt/atlassian/jira/logs/catalina.out
+  elif [[ $1 == "jira" && -f $jirasite/start-jira.sh ]]; then
+    sudo tail -200 /var/atlassian/application-data/jira/log/atlassian-jira.log   
     return 1
-  elif [[ $1 == "crowd" && -f $crowdsite/start_crowd.sh ]]; then  
-    sudo -i tail -200 /opt/atlassian-crowd-2.9.1/apache-tomcat/logs/catalina.out
+  elif [[ $1 == "crowd" && -f $crowdsite/start_crowd.sh ]]; then
+    sudo tail -200 /var/crowd-home/logs/atlassian-crowd.log  
     return 1
   else
 	  echo ""
