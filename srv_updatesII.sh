@@ -36,7 +36,7 @@ return
 }
 
 
-if [[ -s /home/erocha/updates.txt ]]; then
+if [[ -s /home/erocha/bashscripts/updates.txt ]]; then
 
 	file_lines=$(wc -l < centos-update.txt) 
 	((start_lines=$file_lines - 2))
