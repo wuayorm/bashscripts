@@ -8,8 +8,8 @@
 #
 
 # remove previous files
-rm -f /home/erocha/*.txt
-sudo rm -f /home/erocha/backups/*
+# rm -f /home/erocha/*.txt
+# sudo rm -f /home/erocha/backups/*
 
 
 
