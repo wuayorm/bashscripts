@@ -35,7 +35,7 @@ return
 
 }
 
-
+# Modify the path
 if [[ -s /home/erocha/bashscripts/updates.txt ]]; then
 
 	file_lines=$(wc -l < centos-update.txt) 

@@ -35,6 +35,7 @@ return
 
 }
 
+# Modify the path
 
 if [[ -s /home/erocha/bashscripts/security.txt ]]; then
 
