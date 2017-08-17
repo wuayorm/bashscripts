@@ -23,9 +23,6 @@ crowdsite="/opt/atlassian-crowd-2.9.1"
 
 function fbackup() {
 
-  backupdate=""
-  srvname=$(hostname)
-  sudo rm -f /home/erocha/backups/*
 
   if [ -z $1 ]; then
      echo ""
@@ -35,6 +32,10 @@ function fbackup() {
      echo "Examples: fbackup jira; fbackup confluence"
      echo ""
      return 1
+  else
+     backupdate=""
+     srvname=$(hostname)
+     sudo rm -f /home/erocha/backups/*
   fi
 
 
