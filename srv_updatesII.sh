@@ -15,7 +15,7 @@
 
 # define variables
 #description=""
-description=$(echo "h1.{color:#ff0000}"$(hostname)".esc13.net{color}"'\\u000a')
+description=$(echo "h1.{color:#ff0000}"$(hostname -s)".esc13.net{color}"'\\u000a')
 
 
 
@@ -44,7 +44,7 @@ if [[ -s /home/erocha/bashscripts/updates.txt ]]; then
 #	sed -e "$start_lines,${file_lines}d" centos-update.txt > ticket.txt
 	sed -e "$start_lines,${file_lines}d" centos-update.txt | sed '/Loaded/,/Resolved/ d' > ticket.txt
 
-	summary="Server Updates. -> "$(hostname)
+	summary="Server Updates. -> "$(hostname -s)".esc13.net"
 #	description=$(< ticket.txt)
 #	description="h1.{color:#ff0000}$(hostname).esc13.net{color}$(< ticket.txt)"
 	read_file
