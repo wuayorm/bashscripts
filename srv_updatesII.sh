@@ -2,13 +2,14 @@
 #
 # Script to check for regular server updates.
 # Created by: Eduardo Rocha
-# Version: 2.2
-# Modified: 08.24.2017
+# Version: 2.3
+# Modified: 09.08.2017
 #
 #
 
 # remove previous files
  rm -f /home/erocha/*.txt
+ rm -f /home/erocha/bashscripts/*.txt
 # sudo rm -f /home/erocha/backups/*
 
 
