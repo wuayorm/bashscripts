@@ -3,7 +3,7 @@
 # Script to check for regular server updates.
 # Created by: Eduardo Rocha
 # Version: 2.3
-# Modified: 09.08.2017
+# Modified: 09.21.2017
 #
 #
 
@@ -20,8 +20,8 @@ description=$(echo "h1.{color:#ff0000}"$(hostname -s)".esc13.net{color}"'\\u000a
 
 
 
-sudo yum update --assumeno > centos-update.txt
-sudo yum update --assumeno | grep "Upgrade" > updates.txt
+sudo yum update --assumeno > /home/erocha/bashscripts/centos-update.txt
+sudo yum update --assumeno | grep "Upgrade" > /home/erocha/bashscripts/updates.txt
 
 
 read_file () {
@@ -29,7 +29,7 @@ read_file () {
         while IFS= read -r line
         do
           description=$description$line'\\u000a'
-        done < ticket.txt
+        done < /home/erocha/bashscripts/ticket.txt
 
 echo $description
 return
@@ -39,35 +39,35 @@ return
 # Modify the path
 if [[ -s /home/erocha/bashscripts/updates.txt ]]; then
 
-	file_lines=$(wc -l < centos-update.txt) 
+	file_lines=$(wc -l < /home/erocha/bashscripts/centos-update.txt) 
 	((start_lines=$file_lines - 2))
 
 #	sed -e "$start_lines,${file_lines}d" centos-update.txt > ticket.txt
-	sed -e "$start_lines,${file_lines}d" centos-update.txt | sed '/Loaded/,/Resolved/ d' > ticket.txt
+	sed -e "$start_lines,${file_lines}d" centos-update.txt | sed '/Loaded/,/Resolved/ d' > /home/erocha/bashscripts/ticket.txt
 
 	summary="Server Updates. -> "$(hostname -s)".esc13.net"
 #	description=$(< ticket.txt)
 #	description="h1.{color:#ff0000}$(hostname).esc13.net{color}$(< ticket.txt)"
 	read_file
 
-	echo "{" >> jira.txt
-	echo '"fields": {' >> jira.txt
-	echo '"project": {' >> jira.txt
-	echo '"key": "ITHELP"' >> jira.txt
-	echo "}," >> jira.txt
-	echo '"summary":' '"'$summary'"'',' >> jira.txt
-	echo -e '"description":' '"'$description'"'',' >> jira.txt
-	echo '"issuetype": {' >> jira.txt
-	echo '"name": "Task"' >> jira.txt
-	echo "}" >> jira.txt
-	echo "}" >> jira.txt
-	echo "}" >> jira.txt
+	echo "{" >> /home/erocha/bashscripts/jira.txt
+	echo '"fields": {' >> /home/erocha/bashscripts/jira.txt
+	echo '"project": {' >> /home/erocha/bashscripts/jira.txt
+	echo '"key": "ITHELP"' >> /home/erocha/bashscripts/jira.txt
+	echo "}," >> /home/erocha/bashscripts/jira.txt
+	echo '"summary":' '"'$summary'"'',' >> /home/erocha/bashscripts/jira.txt
+	echo -e '"description":' '"'$description'"'',' >> /home/erocha/bashscripts/jira.txt
+	echo '"issuetype": {' >> /home/erocha/bashscripts/jira.txt
+	echo '"name": "Task"' >> /home/erocha/bashscripts/jira.txt
+	echo "}" >> /home/erocha/bashscripts/jira.txt
+	echo "}" >> /home/erocha/bashscripts/jira.txt
+	echo "}" >> /home/erocha/bashscripts/jira.txt
 
 
 #	Add log entry for the update.
 
        # echo "Update $(date +%Y%m%d_%H%M%S) regular update" >> updates.log	
-	echo "$(date) regular update" >> updates.log
+	echo "$(date) regular update" >> /home/erocha/bashscripts/updates.log
 
         echo ""
 	echo "New Centos updates!!!!"
@@ -76,7 +76,7 @@ if [[ -s /home/erocha/bashscripts/updates.txt ]]; then
 else
 
 #	echo "No updates $(date +%Y%m%d_%H%M%S) " >> updates.log
-	echo "$(date) No updates" >> updates.log
+	echo "$(date) No updates" >> /home/erocha/bashscripts/updates.log
 
 
 fi
