@@ -43,7 +43,7 @@ if [[ -s /home/erocha/bashscripts/updates.txt ]]; then
 	((start_lines=$file_lines - 2))
 
 #	sed -e "$start_lines,${file_lines}d" centos-update.txt > ticket.txt
-	sed -e "$start_lines,${file_lines}d" centos-update.txt | sed '/Loaded/,/Resolved/ d' > /home/erocha/bashscripts/ticket.txt
+	sed -e "$start_lines,${file_lines}d" /home/erocha/bashscripts/centos-update.txt | sed '/Loaded/,/Resolved/ d' > /home/erocha/bashscripts/ticket.txt
 
 	summary="Server Updates. -> "$(hostname -s)".esc13.net"
 #	description=$(< ticket.txt)
