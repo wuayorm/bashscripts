@@ -180,19 +180,19 @@ sudo rm -f /home/erocha/backups/*
 
         echo "Backing up Crowd database...."
         sleep 3
-        mysqldump -u root -h test-atldb.esc13.net crowd | gzip -c > ~/backups/$file3.gz
+        mysqldump -u root -h 127.0.0.1 crowd | gzip -c > ~/backups/$file3.gz
         echo "Crowd database backup complete!!"
         echo ""
 
         echo "Backing up JIRA Service Desk database..."
         sleep 2
-        mysqldump -u root -h itest-atldb.esc13.net jiradb | gzip -c > ~/backups/$file2.gz
+        mysqldump -u root -h 127.0.0.1 jiradb | gzip -c > ~/backups/$file2.gz
         echo "JIRA Service Desk database backup complete!!"
         echo ""
 
         echo "Backing up WIKI database..."
         sleep 2
-        mysqldump -u root -h test-atldb.esc13.net --max_allowed_packet=512M confluence | gzip -c > ~/backups/$file1.gz
+        mysqldump -u root -h 127.0.0.1 --max_allowed_packet=512M confluence | gzip -c > ~/backups/$file1.gz
         echo "WIKI database backup complete!!"
         echo ""
 	return 1
